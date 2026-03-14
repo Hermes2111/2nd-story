@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 type ParallaxProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   speed?: number; // negative for inverse
   className?: string;
 };
