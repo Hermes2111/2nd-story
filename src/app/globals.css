@@ -27,8 +27,19 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* Custom cursor */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3333%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
 }
 
 html, body {

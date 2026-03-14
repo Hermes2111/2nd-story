@@ -1,133 +1,274 @@
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import Parallax from "@/components/Parallax";
+import HeroBackground from "@/components/HeroBackground";
+import MagneticButton from "@/components/MagneticButton";
+import TiltCard from "@/components/TiltCard";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import ScrambleText from "@/components/ScrambleText";
+import Marquee from "@/components/Marquee";
+
+const MARQUEE_ITEMS = [
+  'AI Consulting',
+  'Custom LLMs',
+  'Automation',
+  'Agent Workflows',
+  'Product Design',
+  'Retrieval Pipelines',
+  'Strategy',
+  'Engineering',
+];
+
+const STATS = [
+  { to: 40, suffix: '+', label: 'Projects shipped' },
+  { to: 3,  suffix: '×', label: 'Average ROI' },
+  { to: 12, suffix: '',  label: 'Industries served' },
+  { to: 98, suffix: '%', label: 'Client satisfaction' },
+];
+
+const SERVICES = [
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5"/></svg>
+    ),
+    title: 'AI Consulting',
+    body: 'Opportunity mapping, roadmaps, and implementation plans aligned to measurable outcomes.',
+    tag: 'Strategy',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+    ),
+    title: 'Custom Models',
+    body: 'Fine-tuned LLMs and retrieval pipelines trained and evaluated on your domain data.',
+    tag: 'LLM / RAG',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    ),
+    title: 'Automation',
+    body: 'Agent workflows and systems integration that reduce toil and dramatically increase throughput.',
+    tag: 'Agents',
+  },
+];
+
+const WORK = [
+  {
+    tag: 'LLM · Research',
+    title: 'Autonomous Research Assistant',
+    body: 'Reduced analyst workload by 70% through intelligent document synthesis and source tracking.',
+    gradient: 'from-white/10',
+    speed: -0.06,
+  },
+  {
+    tag: 'Enterprise · AI',
+    title: 'Intelligent Document Platform',
+    body: 'End-to-end contract analysis pipeline deployed for a Fortune 500 legal team.',
+    gradient: 'from-[rgba(11,92,255,0.22)]',
+    speed: 0.06,
+  },
+  {
+    tag: 'Data · Agents',
+    title: 'Predictive Analytics Dashboard',
+    body: 'Real-time forecasting agents integrated seamlessly into an existing BI stack.',
+    gradient: 'from-white/10',
+    speed: -0.04,
+  },
+];
+
+const TESTIMONIALS = [
+  { quote: '"A premium experience from strategy to launch. Flawless execution."', author: 'VP Product', company: 'Fintech' },
+  { quote: '"They made our AI feel effortless — and our users genuinely love it."', author: 'Head of Design', company: 'SaaS' },
+  { quote: '"The quality and polish set a completely new bar for our team."', author: 'CTO', company: 'Healthcare' },
+];
+
+const CLIENTS = ['Acme Corp', 'Meridian', 'Northfield', 'Vantage AI', 'Luminary', 'Axiom'];
 
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden">
-        <Parallax className="absolute inset-0 -z-10 opacity-[0.2]">
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[520px] w-[520px] rounded-full blur-3xl" style={{ background: 'var(--accent-gradient)' }} />
-        </Parallax>
-        <div className="container-xl px-6 pt-24 pb-20 sm:pt-36 sm:pb-28 text-center">
-          <Reveal y={12}>
-            <p className="text-[13px] uppercase tracking-[.24em] text-[color:var(--muted)] mb-4">2ND STORY AGENCY</p>
-          </Reveal>
-          <Reveal y={16}>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight max-w-[16ch] mx-auto">
-              Intelligence. Simplified.
-            </h1>
-          </Reveal>
-          <Reveal y={20}>
-            <p className="text-base sm:text-lg text-[color:var(--muted)] mt-6 max-w-[60ch] mx-auto">
-              We design and build AI products that feel effortless—combining strategy, design, and engineering with precision.
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden min-h-[92vh] flex items-center">
+        <HeroBackground />
+
+        {/* Grid texture */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+          }}
+          aria-hidden
+        />
+
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_40%,var(--background)_100%)]" aria-hidden />
+
+        <div className="container-xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center relative z-10 w-full">
+          <Reveal y={10}>
+            <p className="text-[11px] uppercase tracking-[.28em] text-[color:var(--muted)] mb-6 font-mono">
+              2ND STORY AGENCY
             </p>
           </Reveal>
-          <Reveal y={24}>
-            <div className="mt-10 flex items-center justify-center gap-3">
-              <a href="#contact" className="rounded-full px-5 py-3 text-sm font-medium border border-border hover:border-foreground transition">Start a project</a>
-              <a href="#work" className="text-sm text-[color:var(--muted)] hover:text-foreground transition">See our work →</a>
+
+          <Reveal y={20}>
+            <h1 className="text-5xl sm:text-7xl md:text-[88px] font-semibold tracking-[-0.03em] leading-[1.02] max-w-[14ch] mx-auto">
+              <ScrambleText text="Intelligence." duration={900} />
+              <br />
+              <ScrambleText text="Simplified." delay={300} duration={800} />
+            </h1>
+          </Reveal>
+
+          <Reveal y={20}>
+            <p className="text-base sm:text-lg text-[color:var(--muted)] mt-7 max-w-[52ch] mx-auto leading-relaxed">
+              We design and build AI products that feel effortless — combining strategy,
+              design, and engineering with precision.
+            </p>
+          </Reveal>
+
+          <Reveal y={20}>
+            <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
+              <MagneticButton
+                href="#contact"
+                className="rounded-full px-6 py-3 text-sm font-medium bg-white text-black hover:bg-white/90 transition-colors duration-200"
+              >
+                Start a project
+              </MagneticButton>
+              <MagneticButton
+                href="#work"
+                className="rounded-full px-6 py-3 text-sm text-[color:var(--muted)] border border-border hover:border-foreground hover:text-foreground transition-all duration-200"
+              >
+                See our work →
+              </MagneticButton>
+            </div>
+          </Reveal>
+
+          {/* Scroll hint */}
+          <Reveal y={0}>
+            <div className="mt-20 flex flex-col items-center gap-2 text-[color:var(--muted)] opacity-40">
+              <div className="w-[1px] h-10 bg-current animate-pulse" />
+              <span className="text-[10px] uppercase tracking-widest font-mono">Scroll</span>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section id="services" className="border-y border-border/80">
-        <div className="container-xl px-6 py-16 sm:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Reveal y={16}>
-              <div className="rounded-2xl border border-border/80 p-6 bg-white/[0.02]">
-                <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center mb-4" aria-hidden>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5"/></svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">AI Consulting</h3>
-                <p className="text-[color:var(--muted)]">Opportunity mapping, roadmaps, and implementation plans aligned to outcomes.</p>
+      {/* ── Marquee ── */}
+      <Marquee items={MARQUEE_ITEMS} />
+
+      {/* ── Stats ── */}
+      <section className="border-b border-border/80">
+        <div className="container-xl px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {STATS.map(({ to, suffix, label }, i) => (
+            <Reveal key={label} y={12} delayMs={i * 60}>
+              <div className="text-center">
+                <p className="text-4xl sm:text-5xl font-semibold tracking-tight tabular-nums">
+                  <AnimatedCounter to={to} suffix={suffix} />
+                </p>
+                <p className="text-sm text-[color:var(--muted)] mt-2">{label}</p>
               </div>
             </Reveal>
-            <Reveal y={16} delayMs={80}>
-              <div className="rounded-2xl border border-border/80 p-6 bg-white/[0.02]">
-                <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center mb-4" aria-hidden>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v18M3 12h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Custom Models</h3>
-                <p className="text-[color:var(--muted)]">Fine-tuned LLMs and retrieval pipelines tailored to your domain.</p>
-              </div>
-            </Reveal>
-            <Reveal y={16} delayMs={140}>
-              <div className="rounded-2xl border border-border/80 p-6 bg-white/[0.02]">
-                <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center mb-4" aria-hidden>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Automation</h3>
-                <p className="text-[color:var(--muted)]">Agent workflows and systems integration to reduce toil and increase speed.</p>
-              </div>
-            </Reveal>
-          </div>
+          ))}
         </div>
       </section>
 
-      <section id="work">
-        <div className="container-xl px-6 py-16 sm:py-24">
-          <div className="flex items-end justify-between mb-8">
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Selected work</h2>
-            <a href="#contact" className="text-sm text-[color:var(--muted)] hover:text-foreground transition">Work with us →</a>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-white/10 to-transparent overflow-hidden relative group" speed={-0.06}>
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <span className="text-xs uppercase tracking-widest text-[color:var(--muted)] mb-2">LLM · Research</span>
-                <h3 className="text-lg font-semibold">Autonomous Research Assistant</h3>
-                <p className="text-sm text-[color:var(--muted)] mt-1">Reduced analyst workload by 70% through intelligent document synthesis.</p>
-              </div>
-            </Parallax>
-            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-[rgba(11,92,255,0.2)] to-transparent overflow-hidden relative group" speed={0.06}>
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <span className="text-xs uppercase tracking-widest text-[color:var(--muted)] mb-2">Enterprise · AI</span>
-                <h3 className="text-lg font-semibold">Intelligent Document Platform</h3>
-                <p className="text-sm text-[color:var(--muted)] mt-1">End-to-end contract analysis pipeline for a Fortune 500 legal team.</p>
-              </div>
-            </Parallax>
-            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-white/10 to-transparent overflow-hidden relative group" speed={-0.04}>
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <span className="text-xs uppercase tracking-widest text-[color:var(--muted)] mb-2">Data · Agents</span>
-                <h3 className="text-lg font-semibold">Predictive Analytics Dashboard</h3>
-                <p className="text-sm text-[color:var(--muted)] mt-1">Real-time forecasting agents integrated into an existing BI stack.</p>
-              </div>
-            </Parallax>
-          </div>
-        </div>
-      </section>
-
-      <section id="testimonials" className="border-y border-border/80">
+      {/* ── Services ── */}
+      <section id="services" className="border-b border-border/80">
         <div className="container-xl px-6 py-16 sm:py-24">
           <Reveal y={12}>
+            <p className="text-[11px] uppercase tracking-[.24em] text-[color:var(--muted)] font-mono mb-3">What we do</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-10">Built for every stage</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {SERVICES.map(({ icon, title, body, tag }, i) => (
+              <Reveal key={title} y={16} delayMs={i * 80}>
+                <TiltCard className="h-full rounded-2xl border border-border/80 p-6 bg-white/[0.02] hover:bg-white/[0.04] hover:border-border transition-colors duration-300 flex flex-col gap-4">
+                  <div className="flex items-start justify-between">
+                    <div className="h-10 w-10 rounded-xl bg-white/8 border border-border/60 flex items-center justify-center" aria-hidden>
+                      {icon}
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest text-[color:var(--muted)] font-mono border border-border/60 px-2 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold mb-2">{title}</h3>
+                    <p className="text-sm text-[color:var(--muted)] leading-relaxed">{body}</p>
+                  </div>
+                </TiltCard>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Work ── */}
+      <section id="work" className="border-b border-border/80">
+        <div className="container-xl px-6 py-16 sm:py-24">
+          <Reveal y={12}>
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <p className="text-[11px] uppercase tracking-[.24em] text-[color:var(--muted)] font-mono mb-2">Selected work</p>
+                <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">What we&apos;ve built</h2>
+              </div>
+              <a href="#contact" className="hidden sm:block text-sm text-[color:var(--muted)] hover:text-foreground transition-colors duration-200">
+                Work with us →
+              </a>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {WORK.map(({ tag, title, body, gradient, speed }, i) => (
+              <Reveal key={title} y={16} delayMs={i * 80}>
+                <TiltCard className="h-full">
+                  <Parallax
+                    className={`aspect-[4/3] rounded-2xl border border-border/80 bg-gradient-to-b ${gradient} to-transparent overflow-hidden relative group`}
+                    speed={speed}
+                  >
+                    {/* Hover glow */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_50%_0%,rgba(11,92,255,0.12),transparent_70%)]" />
+                    <div className="absolute inset-0 flex flex-col justify-end p-5">
+                      <span className="text-[10px] uppercase tracking-widest text-[color:var(--muted)] font-mono mb-2">{tag}</span>
+                      <h3 className="text-base font-semibold mb-1">{title}</h3>
+                      <p className="text-sm text-[color:var(--muted)] leading-snug">{body}</p>
+                    </div>
+                  </Parallax>
+                </TiltCard>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ── */}
+      <section id="testimonials" className="border-b border-border/80">
+        <div className="container-xl px-6 py-16 sm:py-24">
+          <Reveal y={12}>
+            <p className="text-[11px] uppercase tracking-[.24em] text-[color:var(--muted)] font-mono mb-2 text-center">Client voices</p>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center mb-12">What clients say</h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Reveal y={16}>
-              <blockquote className="rounded-2xl border border-border/80 p-6 bg-white/[0.02]">
-                <p className="">“A premium experience from strategy to launch. Flawless execution.”</p>
-                <footer className="mt-4 text-sm text-[color:var(--muted)]">VP Product, Fintech</footer>
-              </blockquote>
-            </Reveal>
-            <Reveal y={16} delayMs={80}>
-              <blockquote className="rounded-2xl border border-border/80 p-6 bg-white/[0.02]">
-                <p>“They made our AI feel effortless—and our users love it.”</p>
-                <footer className="mt-4 text-sm text-[color:var(--muted)]">Head of Design, SaaS</footer>
-              </blockquote>
-            </Reveal>
-            <Reveal y={16} delayMs={140}>
-              <blockquote className="rounded-2xl border border-border/80 p-6 bg-white/[0.02]">
-                <p>“The quality and polish set a new bar for our team.”</p>
-                <footer className="mt-4 text-sm text-[color:var(--muted)]">CTO, Healthcare</footer>
-              </blockquote>
-            </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {TESTIMONIALS.map(({ quote, author, company }, i) => (
+              <Reveal key={i} y={16} delayMs={i * 80}>
+                <TiltCard className="h-full rounded-2xl border border-border/80 p-6 bg-white/[0.02] flex flex-col justify-between gap-6">
+                  <p className="text-sm leading-relaxed">{quote}</p>
+                  <footer>
+                    <p className="text-sm font-medium">{author}</p>
+                    <p className="text-xs text-[color:var(--muted)] mt-0.5">{company}</p>
+                  </footer>
+                </TiltCard>
+              </Reveal>
+            ))}
           </div>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
-            {['Acme Corp', 'Meridian', 'Northfield', 'Vantage AI', 'Luminary', 'Axiom'].map((name, i) => (
+
+          {/* Client logos */}
+          <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center">
+            {CLIENTS.map((name, i) => (
               <Reveal key={name} y={8} delayMs={i * 40}>
-                <div className="h-8 rounded-md bg-white/5 border border-border/60 flex items-center justify-center px-3">
-                  <span className="text-xs font-medium tracking-wide text-[color:var(--muted)]">{name}</span>
+                <div className="h-9 rounded-lg bg-white/[0.03] border border-border/60 flex items-center justify-center px-3 hover:bg-white/[0.06] transition-colors duration-200">
+                  <span className="text-[11px] font-medium tracking-wide text-[color:var(--muted)]">{name}</span>
                 </div>
               </Reveal>
             ))}
@@ -135,39 +276,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="border-y border-border/80">
-        <div className="container-xl px-6 py-16 sm:py-24 grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-4">Built for clarity</h2>
-            <p className="text-[color:var(--muted)]">We focus on essentials: crisp typography, generous spacing, and careful motion to make complex AI feel simple.</p>
-          </div>
-          <div className="grid grid-cols-2 gap-6 text-sm">
-            <div>
-              <p className="text-[color:var(--muted)]">Clients</p>
-              <p className="mt-1">Startups → Enterprise</p>
+      {/* ── About ── */}
+      <section id="about" className="border-b border-border/80">
+        <div className="container-xl px-6 py-16 sm:py-24 grid grid-cols-1 md:grid-cols-2 gap-14">
+          <Reveal y={16}>
+            <p className="text-[11px] uppercase tracking-[.24em] text-[color:var(--muted)] font-mono mb-3">About us</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-5">Built for clarity</h2>
+            <p className="text-[color:var(--muted)] leading-relaxed">
+              We focus on the essentials: crisp typography, generous spacing, and
+              careful motion to make complex AI feel simple. Every decision is
+              intentional — no feature bloat, no design noise.
+            </p>
+          </Reveal>
+          <Reveal y={16} delayMs={80}>
+            <div className="grid grid-cols-2 gap-6 text-sm h-full content-start">
+              {[
+                ['Clients', 'Startups → Enterprise'],
+                ['Focus', 'AI UX, Agents, Platforms'],
+                ['Engagements', 'Discovery → Build → Scale'],
+                ['Footprint', 'Remote-first, worldwide'],
+              ].map(([label, value]) => (
+                <div key={label} className="border-t border-border/80 pt-4">
+                  <p className="text-[color:var(--muted)] text-xs uppercase tracking-widest font-mono mb-1">{label}</p>
+                  <p className="font-medium">{value}</p>
+                </div>
+              ))}
             </div>
-            <div>
-              <p className="text-[color:var(--muted)]">Focus</p>
-              <p className="mt-1">AI UX, Agents, Platforms</p>
-            </div>
-            <div>
-              <p className="text-[color:var(--muted)]">Engagements</p>
-              <p className="mt-1">Discovery → Build → Scale</p>
-            </div>
-            <div>
-              <p className="text-[color:var(--muted)]">Footprint</p>
-              <p className="mt-1">Remote-first</p>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
+      {/* ── Contact ── */}
       <section id="contact">
-        <div className="container-xl px-6 py-20 sm:py-28 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Let’s make something great</h2>
-          <p className="text-[color:var(--muted)] mt-3">Tell us about your project and timeline.</p>
-          <div className="mt-10" />
-          <ContactForm />
+        <div className="container-xl px-6 py-20 sm:py-32 text-center">
+          <Reveal y={12}>
+            <p className="text-[11px] uppercase tracking-[.24em] text-[color:var(--muted)] font-mono mb-4">Get in touch</p>
+          </Reveal>
+          <Reveal y={20}>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight mb-3">
+              Let&apos;s make something great
+            </h2>
+          </Reveal>
+          <Reveal y={16}>
+            <p className="text-[color:var(--muted)] mb-12">Tell us about your project and timeline.</p>
+          </Reveal>
+          <Reveal y={12}>
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
     </>
