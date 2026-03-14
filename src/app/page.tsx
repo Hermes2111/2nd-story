@@ -149,7 +149,6 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Let’s make something great</h2>
           <p className="text-[color:var(--muted)] mt-3">Tell us about your project and timeline.</p>
           <div className="mt-10" />
-          {/* @ts-expect-error Server Components can render client components */}
           <ContactForm />
         </div>
       </section>

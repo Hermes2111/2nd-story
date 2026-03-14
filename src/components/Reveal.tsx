@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 type RevealProps = {
   children: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   className?: string;
   delayMs?: number;
   y?: number; // translateY in px
