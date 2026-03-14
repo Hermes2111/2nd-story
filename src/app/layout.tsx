@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -49,7 +50,7 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <header className="sticky top-0 z-50 backdrop-blur-soft/0 bg-background/60 border-b border-border/80">
             <nav className="container-xl px-6 py-4 flex items-center justify-between">
-              <a href="/" className="text-[15px] font-medium tracking-tight">2nd Story</a>
+              <Link href="/" className="text-[15px] font-medium tracking-tight">2nd Story</Link>
               <div className="hidden md:flex items-center gap-6 text-sm text-[color:var(--muted)]">
                 <a href="#services" className="hover:text-foreground transition">Services</a>
                 <a href="#work" className="hover:text-foreground transition">Work</a>

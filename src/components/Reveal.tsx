@@ -32,7 +32,7 @@ export default function Reveal({ children, as = 'div', className, delayMs = 0, y
     return () => observer.disconnect();
   }, [delayMs]);
 
-  const Component: any = as;
+  const Component = as as React.ElementType;
   const classes = [
     'transition-all duration-700 will-change-transform will-change-opacity',
     visible ? 'opacity-100 translate-y-0' : 'opacity-0',
@@ -40,7 +40,7 @@ export default function Reveal({ children, as = 'div', className, delayMs = 0, y
   ].join(' ').trim();
   return (
     <Component
-      ref={ref as any}
+      ref={ref as React.Ref<HTMLElement>}
       className={classes}
       style={{ transform: visible ? 'translateY(0px)' : `translateY(${y}px)` }}
     >
