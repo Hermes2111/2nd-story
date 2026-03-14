@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -57,7 +58,8 @@ export default function RootLayout({
                 <a href="#about" className="hover:text-foreground transition">About</a>
                 <a href="#contact" className="hover:text-foreground transition">Contact</a>
               </div>
-              <a href="#contact" className="text-sm rounded-full px-4 py-2 border border-border hover:border-foreground transition">Let’s talk</a>
+              <a href="#contact" className="hidden md:inline-block text-sm rounded-full px-4 py-2 border border-border hover:border-foreground transition">Let&apos;s talk</a>
+              <MobileNav />
             </nav>
           </header>
           <main className="flex-1">{children}</main>

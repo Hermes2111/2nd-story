@@ -73,11 +73,28 @@ export default function Home() {
             <a href="#contact" className="text-sm text-[color:var(--muted)] hover:text-foreground transition">Work with us →</a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-white/10 to-transparent" speed={-0.06} />
-            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-[rgba(11,92,255,0.2)] to-transparent" speed={0.06} />
-            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-white/10 to-transparent" speed={-0.04} />
+            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-white/10 to-transparent overflow-hidden relative group" speed={-0.06}>
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <span className="text-xs uppercase tracking-widest text-[color:var(--muted)] mb-2">LLM · Research</span>
+                <h3 className="text-lg font-semibold">Autonomous Research Assistant</h3>
+                <p className="text-sm text-[color:var(--muted)] mt-1">Reduced analyst workload by 70% through intelligent document synthesis.</p>
+              </div>
+            </Parallax>
+            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-[rgba(11,92,255,0.2)] to-transparent overflow-hidden relative group" speed={0.06}>
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <span className="text-xs uppercase tracking-widest text-[color:var(--muted)] mb-2">Enterprise · AI</span>
+                <h3 className="text-lg font-semibold">Intelligent Document Platform</h3>
+                <p className="text-sm text-[color:var(--muted)] mt-1">End-to-end contract analysis pipeline for a Fortune 500 legal team.</p>
+              </div>
+            </Parallax>
+            <Parallax className="aspect-[4/3] rounded-3xl border border-border/80 bg-gradient-to-b from-white/10 to-transparent overflow-hidden relative group" speed={-0.04}>
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <span className="text-xs uppercase tracking-widest text-[color:var(--muted)] mb-2">Data · Agents</span>
+                <h3 className="text-lg font-semibold">Predictive Analytics Dashboard</h3>
+                <p className="text-sm text-[color:var(--muted)] mt-1">Real-time forecasting agents integrated into an existing BI stack.</p>
+              </div>
+            </Parallax>
           </div>
-          <div className="mt-6 text-sm text-[color:var(--muted)]">Big, immersive visuals. Minimal copy. Just like product showcases.</div>
         </div>
       </section>
 
@@ -106,13 +123,14 @@ export default function Home() {
               </blockquote>
             </Reveal>
           </div>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center opacity-80">
-            <Reveal y={12}><div className="h-8 rounded-md bg-white/10" /></Reveal>
-            <Reveal y={12} delayMs={60}><div className="h-8 rounded-md bg-white/10" /></Reveal>
-            <Reveal y={12} delayMs={100}><div className="h-8 rounded-md bg-white/10" /></Reveal>
-            <Reveal y={12} delayMs={140}><div className="h-8 rounded-md bg-white/10" /></Reveal>
-            <Reveal y={12} delayMs={180}><div className="h-8 rounded-md bg-white/10" /></Reveal>
-            <Reveal y={12} delayMs={220}><div className="h-8 rounded-md bg-white/10" /></Reveal>
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center">
+            {['Acme Corp', 'Meridian', 'Northfield', 'Vantage AI', 'Luminary', 'Axiom'].map((name, i) => (
+              <Reveal key={name} y={8} delayMs={i * 40}>
+                <div className="h-8 rounded-md bg-white/5 border border-border/60 flex items-center justify-center px-3">
+                  <span className="text-xs font-medium tracking-wide text-[color:var(--muted)]">{name}</span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
