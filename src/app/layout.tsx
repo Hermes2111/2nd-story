@@ -6,6 +6,7 @@ import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import NoiseOverlay from "@/components/NoiseOverlay";
+import LoadingScreen from "@/components/LoadingScreen";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -53,6 +54,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${geistMono.variable} ${inter.variable} antialiased h-full`}>
         <SmoothScrollProvider>
+          <LoadingScreen />
           <CustomCursor />
           <ScrollProgress />
           <NoiseOverlay />
